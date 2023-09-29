@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Калькулятор</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="js/calculate.js" defer></script>
+    <script src="js/switch.js" defer></script>
+    <script src="js/bootstrap.min.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container bg-primary-subtle text-center">
+      <div class="row row-cols-md-2 align-items-center">
+        <div class="col-lg-4">
+          <h3 class="mb-3">Выберите тип кровли</h3>
+          <!-- Кнопки типа калькулятора -->
+          <div class="type-calc">
+            <button class="c-button selected" data-id="1" onclick="func(this)">
+              <span>
+                <img class="btn-img" src="img/Shed-0.svg" alt="" />
+                Односкатная
+              </span>
+            </button>
+            <button class="c-button" data-id="2" onclick="func(this)">
+              <span>
+                <img class="btn-img" src="img/Gable-0.svg" alt="" />
+                Двускатная
+              </span>
+            </button>
+            <button class="c-button" data-id="3" onclick="func(this)">
+              <span>
+                <img class="btn-img" src="img/Mansard-0.svg" alt="" />
+                Мансардная
+              </span>
+            </button>
+            <button class="c-button" data-id="4" onclick="func(this)">
+              <span>
+                <img class="btn-img" src="img/hip-0.svg" alt="" />
+                Вальмовая
+              </span>
+            </button>
+            <button class="c-button" data-id="5" onclick="func(this)">
+              <span>
+                <img class="btn-img" src="img/hip2-0.svg" alt="" />
+                Шатровая
+              </span>
+            </button>
+          </div>
+          <!-- Односкатная -->
+          <div class="calc-1 calc">
+            <h3 class="m-3">Расчет количества листов шифера</h3>
+            <form class="parametrs-container">
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="shed-roof-A"
+                    placeholder="Username"
+                    onclick="show(11)"
+                  />
+                  <label for="shed-roof-A">Ширина здания, м</label>
+                </div>
+                <span class="input-group-text">A</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="shed-roof-B"
+                    placeholder="Username"
+                    onclick="show(12)"
+                  />
+                  <label for="shed-roof-B">Высота крыши в коньке, м</label>
+                </div>
+                <span class="input-group-text">B</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="shed-roof-C1"
+                    placeholder="Username"
+                    onclick="show(13)"
+                  />
+                  <label for="shed-roof-C1">Длина свеса, м</label>
+                </div>
+                <span class="input-group-text">C1</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="shed-roof-C2"
+                    placeholder="Username"
+                    onclick="show(14)"
+                  />
+                  <label for="shed-roof-C2">Длина свеса, м</label>
+                </div>
+                <span class="input-group-text">C2</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="shed-roof-D"
+                    placeholder="Username"
+                    onclick="show(15)"
+                  />
+                  <label for="shed-roof-D">Длина конька, м</label>
+                </div>
+                <span class="input-group-text">D</span>
+              </div>
+              <div class="d-grid gap-2 mb-3">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  onclick="calculateFirst()"
+                >
+                  РАССЧИТАТЬ
+                </button>
+                <div class="result" id="shed-roof-result">
+                  Количество листов:
+                </div>
+                <div class="result" id="shed-roof-S">Площадь:</div>
+              </div>
+            </form>
+          </div>
+          <!-- Двускатная -->
+          <div class="calc-2 calc hidden">
+            <h3 class="m-3">Расчет количества листов шифера</h3>
+            <div class="parametrs-container">
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="gable-roof-A"
+                    placeholder="Username"
+                    onclick="show(21)"
+                  />
+                  <label for="gable-roof-A">Ширина здания, м</label>
+                </div>
+                <span class="input-group-text">A</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="gable-roof-B"
+                    placeholder="Username"
+                    onclick="show(22)"
+                  />
+                  <label for="gable-roof-B">Высота крыши в коньке, м</label>
+                </div>
+                <span class="input-group-text">B</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="gable-roof-C"
+                    placeholder="Username"
+                    onclick="show(23)"
+                  />
+                  <label for="gable-roof-C">Длина свеса, м</label>
+                </div>
+                <span class="input-group-text">C</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="gable-roof-D"
+                    placeholder="Username"
+                    onclick="show(24)"
+                  />
+                  <label for="gable-roof-D">Длина конька, м</label>
+                </div>
+                <span class="input-group-text">D</span>
+              </div>
+              <div class="d-grid gap-2 mb-3">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  onclick="calculateSecond()"
+                >
+                  РАССЧИТАТЬ
+                </button>
+                <div class="result" id="gable-roof-result">
+                  Количество листов:
+                </div>
+                <div class="result" id="gable-roof-S">Площадь:</div>
+              </div>
+            </div>
+          </div>
+          <!-- Мансардная -->
+          <div class="calc-3 calc hidden">
+            <h3 class="m-3">Расчет количества листов шифера</h3>
+            <div class="parametrs-container">
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="mansard-roof-A1"
+                    placeholder="Username"
+                    onclick="show(31)"
+                  />
+                  <label for="mansard-roof-A1">Ширина заложений, м</label>
+                </div>
+                <span class="input-group-text">A1</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="mansard-roof-A2"
+                    placeholder="Username"
+                    onclick="show(32)"
+                  />
+                  <label for="mansard-roof-A2">Ширина заложений, м</label>
+                </div>
+                <span class="input-group-text">A2</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="mansard-roof-B1"
+                    placeholder="Username"
+                    onclick="show(33)"
+                  />
+                  <label for="mansard-roof-B1">Высота подъема, м</label>
+                </div>
+                <span class="input-group-text">B1</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="mansard-roof-B2"
+                    placeholder="Username"
+                    onclick="show(34)"
+                  />
+                  <label for="mansard-roof-B2">Высота подъема, м</label>
+                </div>
+                <span class="input-group-text">B2</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="mansard-roof-C"
+                    placeholder="Username"
+                    onclick="show(35)"
+                  />
+                  <label for="mansard-roof-C">Длина свеса, м</label>
+                </div>
+                <span class="input-group-text">C</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="mansard-roof-D"
+                    placeholder="Username"
+                    onclick="show(36)"
+                  />
+                  <label for="mansard-roof-D">Длина конька, м</label>
+                </div>
+                <span class="input-group-text">D</span>
+              </div>
+              <div class="d-grid gap-2 mb-3">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  onclick="calculateThird()"
+                >
+                  РАССЧИТАТЬ
+                </button>
+                <div class="result" id="mansard-roof-result">
+                  Количество листов:
+                </div>
+                <div class="result" id="mansard-roof-S">Площадь:</div>
+              </div>
+            </div>
+          </div>
+          <!-- Вальмовая -->
+          <div class="calc-4 calc hidden">
+            <h3 class="m-3">Расчет количества листов шифера</h3>
+            <div class="parametrs-container">
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="hip-roof-A"
+                    placeholder="Username"
+                    onclick="show(41)"
+                  />
+                  <label for="hip-roof-A">Ширина ската 1, м</label>
+                </div>
+                <span class="input-group-text">A</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="hip-roof-B"
+                    placeholder="Username"
+                    onclick="show(42)"
+                  />
+                  <label for="hip-roof-B">Ширина ската 2, м</label>
+                </div>
+                <span class="input-group-text">B</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="hip-roof-D"
+                    placeholder="Username"
+                    onclick="show(43)"
+                  />
+                  <label for="hip-roof-D">Ширина конька, м</label>
+                </div>
+                <span class="input-group-text">D</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="hip-roof-K"
+                    placeholder="Username"
+                    onclick="show(44)"
+                  />
+                  <label for="hip-roof-K">Высота конька, м</label>
+                </div>
+                <span class="input-group-text">K</span>
+              </div>
+              <div class="d-grid gap-2 mb-3">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  onclick="calculateFourth()"
+                >
+                  РАССЧИТАТЬ
+                </button>
+                <div class="result" id="hip-roof-result">
+                  Количество листов:
+                </div>
+                <div class="result" id="hip-roof-S">Площадь:</div>
+              </div>
+            </div>
+          </div>
+          <!-- Шатровая -->
+          <div class="calc-5 calc hidden">
+            <h3 class="m-3">Расчет количества листов шифера</h3>
+            <div class="parametrs-container">
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="hip2-roof-A"
+                    placeholder="Username"
+                    onclick="show(51)"
+                  />
+                  <label for="hip2-roof-A">Ширина ската 1, м</label>
+                </div>
+                <span class="input-group-text">A</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="hip2-roof-D"
+                    placeholder="Username"
+                    onclick="show(52)"
+                  />
+                  <label for="hip2-roof-D">Ширина ската 2, м</label>
+                </div>
+                <span class="input-group-text">D</span>
+              </div>
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="hip2-roof-K"
+                    placeholder="Username"
+                    onclick="show(53)"
+                  />
+                  <label for="hip2-roof-K">Высота конька, м</label>
+                </div>
+                <span class="input-group-text">K</span>
+              </div>
+              <div class="d-grid gap-2 mb-3 mb-3">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  onclick="calculateFive()"
+                >
+                  РАССЧИТАТЬ
+                </button>
+                <div class="result" id="hip2-roof-result">
+                  Количество листов:
+                </div>
+                <div class="result" id="hip2-roof-S">Площадь:</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Схемы -->
+        <div class="container col-lg-8 mt-3">
+          <!-- Односкатная схема  -->
+          <div class="row align-items-center">
+            <div class="calc-sheme-1 sheme">
+              <h3>Односкатная</h3>
+              <img
+                class="calc-sheme-1 sheme-img hide-sheme"
+                src="img/Shed-1.svg"
+                alt="Схема односкатной крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-11"
+                src="img/Shed-A.svg"
+                alt="Схема односкатной крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-12"
+                src="img/Shed-B.svg"
+                alt="Схема односкатной крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-13"
+                src="img/Shed-C1.svg"
+                alt="Схема односкатной крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-14"
+                src="img/Shed-C2.svg"
+                alt="Схема односкатной крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-15"
+                src="img/Shed-D.svg"
+                alt="Схема односкатной крыши"
+              />
+            </div>
+          </div>
+          <!-- Двускатная схема -->
+          <div class="row align-items-center">
+            <div class="hidden calc-sheme-2 sheme">
+              <h3>Двускатная</h3>
+              <img
+                class="calc-sheme-2 hidden sheme-img hide-sheme"
+                src="img/Gable-1.svg"
+                alt="Схема двускатной крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-21"
+                src="img/Gable-A.svg"
+                alt="Схема двускатной крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-22"
+                src="img/Gable-B.svg"
+                alt="Схема двускатной крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-23"
+                src="img/Gable-C.svg"
+                alt="Схема двускатной крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-24"
+                src="img/Gable-D.svg"
+                alt="Схема двускатной крыши"
+              />
+            </div>
+          </div>
+          <!-- Мансардная схема -->
+          <div class="row align-items-center">
+            <div class="hidden calc-sheme-3 sheme">
+              <h3>Мансардная</h3>
+              <img
+                class="calc-sheme-3 hidden sheme-img hide-sheme"
+                src="img/Mansard-1.svg"
+                alt="Схема мансардной крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-31"
+                src="img/Mansard-A1.svg"
+                alt="Схема мансардной крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-32"
+                src="img/Mansard-A2.svg"
+                alt="Схема мансардной крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-33"
+                src="img/Mansard-B1.svg"
+                alt="Схема мансардной крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-34"
+                src="img/Mansard-B2.svg"
+                alt="Схема мансардной крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-35"
+                src="img/Mansard-C.svg"
+                alt="Схема мансардной крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-36"
+                src="img/Mansard-D.svg"
+                alt="Схема мансардной крыши"
+              />
+            </div>
+          </div>
+          <!-- Вальмовая схема -->
+          <div class="row align-items-center">
+            <div class="hidden calc-sheme-4 sheme">
+              <h3>Вальмовая</h3>
+              <img
+                class="calc-sheme-4 hidden sheme-img hide-sheme"
+                src="img/hip-1.svg"
+                alt="Схема вальмовой крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-41"
+                src="img/hip-A.svg"
+                alt="Схема вальмовой крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-42"
+                src="img/hip-B.svg"
+                alt="Схема вальмовой крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-43"
+                src="img/hip-D.svg"
+                alt="Схема вальмовой крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-44"
+                src="img/hip-K.svg"
+                alt="Схема вальмовой крыши"
+              />
+            </div>
+          </div>
+          <!-- Шатровая схема -->
+          <div class="row align-items-center">
+            <div class="hidden calc-sheme-5 sheme">
+              <h3>Шатровая</h3>
+              <img
+                class="calc-sheme-5 hidden sheme-img hide-sheme"
+                src="img/hip2-1.svg"
+                alt="Схема шатровой крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-51"
+                src="img/hip2-A.svg"
+                alt="Схема шатровой крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-52"
+                src="img/hip2-D.svg"
+                alt="Схема шатровой крыши"
+              />
+              <img
+                class="hidden sheme-img hide-sheme show-sheme-53"
+                src="img/hip2-K.svg"
+                alt="Схема шатровой крыши"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

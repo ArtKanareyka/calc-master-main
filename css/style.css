@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  text-transform: uppercase;
+}
+
+.btn-img {
+  max-width: 40%;
+}
+
+.sheme-img {
+  width: 500px;
+  max-width: 100%;
+}
+
+.type-calc {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 10px;
+}
+.result {
+  border: 2px solid rgba(70, 118, 215, 0.6);
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 10px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.c-button {
+  border: 3px solid transparent;
+  border-radius: 5px;
+}
+
+.c-button.selected {
+  border-color: #4676d7;
+}
